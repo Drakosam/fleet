@@ -1,3 +1,121 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SettingsView.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SkillsView.tscn" type="PackedScene" id=2]
+[ext_resource path="res://FleetView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ShipView.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+func _ready():
+	$CanvasLayer/PanelContainer/Settings.visible = true
+
+
+func _on_Settings_button_up():
+	_hide_all()
+	$CanvasLayer/PanelContainer/Settings.visible = true
+
+
+func _on_Fleet_button_up():
+	_hide_all()
+	$CanvasLayer/PanelContainer/Fleet.visible = true
+
+
+func _on_Skills_button_up():
+	_hide_all()
+	$CanvasLayer/PanelContainer/Skills.visible = true
+
+
+func _on_Ship_button_up():
+	_hide_all()
+	$CanvasLayer/PanelContainer/Shiip.visible = true
+
+func _hide_all():
+	$CanvasLayer/PanelContainer/Fleet.visible = false
+	$CanvasLayer/PanelContainer/Settings.visible = false
+	$CanvasLayer/PanelContainer/Skills.visible = false
+	$CanvasLayer/PanelContainer/Shiip.visible = false
+"
 
 [node name="Main" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_bottom = 1.0
+margin_right = 60.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Settings" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+text = "Set"
+
+[node name="Fleet" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 60, 60 )
+text = "Fleet"
+
+[node name="Skills" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 128.0
+margin_right = 60.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 60, 60 )
+text = "Skills"
+
+[node name="Ship" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 192.0
+margin_right = 60.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 60, 60 )
+text = "Ship"
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 60.0
+
+[node name="Settings" parent="CanvasLayer/PanelContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 957.0
+margin_bottom = 593.0
+
+[node name="Fleet" parent="CanvasLayer/PanelContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 957.0
+margin_bottom = 593.0
+
+[node name="Shiip" parent="CanvasLayer/PanelContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 957.0
+margin_bottom = 593.0
+
+[node name="Skills" parent="CanvasLayer/PanelContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 957.0
+margin_bottom = 593.0
+
+[connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Settings" to="." method="_on_Settings_button_up"]
+[connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Fleet" to="." method="_on_Fleet_button_up"]
+[connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Skills" to="." method="_on_Skills_button_up"]
+[connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Ship" to="." method="_on_Ship_button_up"]

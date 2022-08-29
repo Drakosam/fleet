@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+var exp_req = 0;
+var exp_now = 0;
+var skill_name = '';
+var skill_req = []
+var treined = false;
+
+
+func _ready():
+	pass # Replace with function body.
+"
+
+[node name="SkillEntity" type="Node"]
+script = SubResource( 1 )

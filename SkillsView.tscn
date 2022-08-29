@@ -1,0 +1,54 @@
+[gd_scene format=2]
+
+[node name="Skills" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Select_Person" type="Panel" parent="."]
+anchor_right = 1.0
+margin_bottom = 60.0
+
+[node name="queue" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 60.0
+tab_align = 0
+
+[node name="Skill queue" type="Tabs" parent="queue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+tab_align = 0
+
+[node name="Ships" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
+
+[node name="Wepons" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
+
+[node name="Engeniring" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
+
+[node name="Industry" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
+
+[node name="Social" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
+
+[node name="Misc" type="Tabs" parent="queue"]
+visible = false
+margin_right = 40.0
+margin_bottom = 24.0
