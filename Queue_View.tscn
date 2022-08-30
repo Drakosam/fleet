@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Tabs
+
+var actor_list = []
+
+func _ready():
+	pass # Replace with function body.
+
+
+func tick_queue():
+	if len(actor_list):
+		$xp.text = str(actor_list[0].get_progress())
+
+	
+func setup_actor(_aktor_list):
+	actor_list=_aktor_list
+
+"
+
+[node name="Queue" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 47.0
+margin_bottom = 22.0
+text = "xp :: "
+
+[node name="xp" type="Label" parent="."]
+margin_left = 42.0
+margin_top = 2.0
+margin_right = 89.0
+margin_bottom = 24.0
+text = "0"

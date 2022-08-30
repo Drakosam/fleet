@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://SettingsView.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SkillsView.tscn" type="PackedScene" id=2]
 [ext_resource path="res://FleetView.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ShipView.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameSystem.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 func _ready():
 	$CanvasLayer/PanelContainer/Settings.visible = true
+	update_actor_list()
 
+func update_actor_list():
+	$CanvasLayer/PanelContainer/Skills.setup_actor($GameSystem.aktors_list)
 
 func _on_Settings_button_up():
 	_hide_all()
@@ -36,10 +40,17 @@ func _hide_all():
 	$CanvasLayer/PanelContainer/Settings.visible = false
 	$CanvasLayer/PanelContainer/Skills.visible = false
 	$CanvasLayer/PanelContainer/Shiip.visible = false
+
+
+func _on_Timer_timeout():
+	$CanvasLayer/PanelContainer/Skills.tick_up()
+	$GameSystem.tick_up()
 "
 
 [node name="Main" type="Node2D"]
 script = SubResource( 1 )
+
+[node name="GameSystem" parent="." instance=ExtResource( 5 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -115,7 +126,11 @@ margin_top = 7.0
 margin_right = 957.0
 margin_bottom = 593.0
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Settings" to="." method="_on_Settings_button_up"]
 [connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Fleet" to="." method="_on_Fleet_button_up"]
 [connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Skills" to="." method="_on_Skills_button_up"]
 [connection signal="button_up" from="CanvasLayer/Panel/VBoxContainer/Ship" to="." method="_on_Ship_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

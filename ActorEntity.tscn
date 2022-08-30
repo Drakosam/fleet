@@ -3,9 +3,62 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
+var skill_list = []
+var skill_queue = []
+var xp_bank = 0
+
+var SkillEntity = preload(\"res://SkillEntity.tscn\")
 
 func _ready():
-	pass # Replace with function body.
+	pass
+	
+func set_actor():
+	setup_skill_tree()
+	skill_queue.append(skill_list[0])
+	skill_queue.append(skill_list[1])
+
+
+func gain_exp():
+	if len(skill_queue)>0:
+		var partial_xp = skill_queue[0].add_exp(5)
+		xp_bank +=partial_xp
+		if skill_queue[0].treined:
+			skill_queue.remove(0)
+	else:
+		xp_bank += 5
+	
+func get_progress():
+	print(skill_queue)
+	if len(skill_queue)>0:
+		return str(skill_queue[0].exp_now)+'/'+str(skill_queue[0].exp_req)
+	return str(xp_bank)
+
+
+func setup_skill_tree():
+	var skil_ship_1 = SkillEntity.instance()
+	skil_ship_1.skill_name = 'Ships 1'
+	skil_ship_1.set_skill_exp(1,1)
+	skill_list.append(skil_ship_1)
+	
+	var skil_ship_2 = SkillEntity.instance()
+	skil_ship_2.skill_name = 'Ships 2'
+	skil_ship_2.set_skill_exp(2,1)
+	skill_list.append(skil_ship_2)
+	
+	var skil_ship_3 = SkillEntity.instance()
+	skil_ship_3.skill_name = 'Ships 3'
+	skil_ship_3.set_skill_exp(3,1)
+	skill_list.append(skil_ship_3)
+	
+	var skil_ship_4 = SkillEntity.instance()
+	skil_ship_4.skill_name = 'Ships 4'
+	skil_ship_4.set_skill_exp(4,1)
+	skill_list.append(skil_ship_4)
+	
+	var skil_ship_5 = SkillEntity.instance()
+	skil_ship_5.skill_name = 'Ships 5'
+	skil_ship_5.set_skill_exp(5,1)
+	skill_list.append(skil_ship_5)
 "
 
 [node name="Actor" type="Node"]

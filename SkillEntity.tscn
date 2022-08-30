@@ -12,6 +12,19 @@ var treined = false;
 
 func _ready():
 	pass # Replace with function body.
+
+
+func set_skill_exp(lvl, dif):
+	exp_req = (500 *lvl + 500 * (lvl-1))*dif
+	
+func add_exp(_exp):
+	exp_now +=_exp 
+	if exp_now >= exp_req:
+		treined = true
+		return exp_now - exp_req
+	return 0
+	
+	
 "
 
 [node name="SkillEntity" type="Node"]
