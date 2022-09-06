@@ -8,6 +8,7 @@ var exp_now = 0;
 var skill_name = '';
 var skill_req = []
 var treined = false;
+var skill_grup = 'test'
 
 
 func _ready():
@@ -23,6 +24,9 @@ func add_exp(_exp):
 		treined = true
 		return exp_now - exp_req
 	return 0
+	
+func set_skill_grup(grup_name):
+	skill_grup = grup_name
 	
 	
 "

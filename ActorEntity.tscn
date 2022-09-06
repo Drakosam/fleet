@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SkillTree.tscn" type="PackedScene" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
@@ -7,7 +9,7 @@ var skill_list = []
 var skill_queue = []
 var xp_bank = 0
 
-var SkillEntity = preload(\"res://SkillEntity.tscn\")
+
 
 func _ready():
 	pass
@@ -35,31 +37,10 @@ func get_progress():
 
 
 func setup_skill_tree():
-	var skil_ship_1 = SkillEntity.instance()
-	skil_ship_1.skill_name = 'Ships 1'
-	skil_ship_1.set_skill_exp(1,1)
-	skill_list.append(skil_ship_1)
-	
-	var skil_ship_2 = SkillEntity.instance()
-	skil_ship_2.skill_name = 'Ships 2'
-	skil_ship_2.set_skill_exp(2,1)
-	skill_list.append(skil_ship_2)
-	
-	var skil_ship_3 = SkillEntity.instance()
-	skil_ship_3.skill_name = 'Ships 3'
-	skil_ship_3.set_skill_exp(3,1)
-	skill_list.append(skil_ship_3)
-	
-	var skil_ship_4 = SkillEntity.instance()
-	skil_ship_4.skill_name = 'Ships 4'
-	skil_ship_4.set_skill_exp(4,1)
-	skill_list.append(skil_ship_4)
-	
-	var skil_ship_5 = SkillEntity.instance()
-	skil_ship_5.skill_name = 'Ships 5'
-	skil_ship_5.set_skill_exp(5,1)
-	skill_list.append(skil_ship_5)
+	skill_list = $SkillTree.get_skill_tree()
 "
 
 [node name="Actor" type="Node"]
 script = SubResource( 1 )
+
+[node name="SkillTree" parent="." instance=ExtResource( 1 )]

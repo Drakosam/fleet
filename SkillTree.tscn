@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+var SkillEntity = preload(\"res://SkillEntity.tscn\")
+
+func _ready():
+	pass 
+
+func get_skill_tree():
+	var skill_list = []
+	
+	# Ship core skill
+	var groupe_name_ships = 'ships'
+	skill_list.append(_create_skill('Ships I',1,1,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Ships II',2,1,groupe_name_ships,['Ships I']))
+	skill_list.append(_create_skill('Ships III',3,1,groupe_name_ships,['Ships II']))
+	skill_list.append(_create_skill('Ships IV',4,1,groupe_name_ships,['Ships III']))
+	skill_list.append(_create_skill('Ships V',5,1,groupe_name_ships,['Ships IV']))
+	
+	# Ship Fregate
+	skill_list.append(_create_skill('Fregate I',1,1,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Fregate II',2,1,groupe_name_ships,['Fregate I']))
+	skill_list.append(_create_skill('Fregate III',3,1,groupe_name_ships,['Fregate II']))
+	skill_list.append(_create_skill('Fregate IV',4,1,groupe_name_ships,['Fregate III']))
+	skill_list.append(_create_skill('Fregate V',5,1,groupe_name_ships,['Fregate IV']))
+	
+	# Ship Destoyer
+	skill_list.append(_create_skill('Destoyer I',1,1,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Destoyer II',2,1,groupe_name_ships,['Destoyer I']))
+	skill_list.append(_create_skill('Destoyer III',3,1,groupe_name_ships,['Destoyer II']))
+	skill_list.append(_create_skill('Destoyer IV',4,1,groupe_name_ships,['Destoyer III']))
+	skill_list.append(_create_skill('Destoyer V',5,1,groupe_name_ships,['Destoyer IV']))
+	
+	# Ship Corvete
+	skill_list.append(_create_skill('Corvete I',1,2,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Corvete II',2,2,groupe_name_ships,['Corvete I']))
+	skill_list.append(_create_skill('Corvete III',3,2,groupe_name_ships,['Corvete II']))
+	skill_list.append(_create_skill('Corvete IV',4,2,groupe_name_ships,['Corvete III']))
+	skill_list.append(_create_skill('Corvete V',5,2,groupe_name_ships,['Corvete IV']))
+	
+	# Ship Cruser
+	skill_list.append(_create_skill('Cruser I',1,3,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Cruser II',2,3,groupe_name_ships,['Cruser I']))
+	skill_list.append(_create_skill('Cruser III',3,3,groupe_name_ships,['Cruser II']))
+	skill_list.append(_create_skill('Cruser IV',4,3,groupe_name_ships,['Cruser III']))
+	skill_list.append(_create_skill('Cruser V',5,3,groupe_name_ships,['Cruser IV']))
+	
+	# Ship Battleship
+	skill_list.append(_create_skill('Battleship I',1,4,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Battleship II',2,4,groupe_name_ships,['Battleship I']))
+	skill_list.append(_create_skill('Battleship III',3,4,groupe_name_ships,['Battleship II']))
+	skill_list.append(_create_skill('Battleship IV',4,4,groupe_name_ships,['Battleship III']))
+	skill_list.append(_create_skill('Battleship V',5,4,groupe_name_ships,['Battleship IV']))
+	
+	# Ship Drednot
+	skill_list.append(_create_skill('Drednot I',1,5,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Drednot II',2,5,groupe_name_ships,['Drednot I']))
+	skill_list.append(_create_skill('Drednot III',3,5,groupe_name_ships,['Drednot II']))
+	skill_list.append(_create_skill('Drednot IV',4,5,groupe_name_ships,['Drednot III']))
+	skill_list.append(_create_skill('Drednot V',5,5,groupe_name_ships,['Drednot IV']))
+	
+	# Ship Cargo
+	skill_list.append(_create_skill('Cargo I',1,1,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Cargo II',2,1,groupe_name_ships,['Cargo I']))
+	skill_list.append(_create_skill('Cargo III',3,1,groupe_name_ships,['Cargo II']))
+	skill_list.append(_create_skill('Cargo IV',4,2,groupe_name_ships,['Cargo III']))
+	skill_list.append(_create_skill('Cargo V',5,2,groupe_name_ships,['Cargo IV']))
+	
+	# Ship Industry
+	skill_list.append(_create_skill('Industry Ships I',1,2,groupe_name_ships,[]))
+	skill_list.append(_create_skill('Industry Ships II',2,2,groupe_name_ships,['Industry Ships I']))
+	skill_list.append(_create_skill('Industry Ships III',3,2,groupe_name_ships,['Industry Ships II']))
+	skill_list.append(_create_skill('Industry Ships IV',4,3,groupe_name_ships,['Industry Ships III']))
+	skill_list.append(_create_skill('Industry Ships V',5,3,groupe_name_ships,['Industry Ships IV']))
+	
+	return skill_list
+
+func _create_skill( name, lvl, hard_lvl,groupe_name,req_skill):
+	var skill = SkillEntity.instance()
+	skill.name = name
+	skill.set_skill_exp(lvl,hard_lvl)
+	skill.set_skill_grup(groupe_name)
+	return skill
+"
+
+[node name="SkillTree" type="Node"]
+script = SubResource( 1 )
