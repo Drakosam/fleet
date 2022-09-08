@@ -3,7 +3,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
-var SkillEntity = preload(\"res://SkillEntity.tscn\")
+var SkillEntity = preload(\"res://Entitys/SkillEntity.tscn\")
 
 func _ready():
 	pass 
@@ -77,7 +77,7 @@ func get_skill_tree():
 	
 	return skill_list
 
-func _create_skill( name, lvl, hard_lvl,groupe_name,req_skill):
+func _create_skill( name, lvl, hard_lvl, groupe_name, _req_skill):
 	var skill = SkillEntity.instance()
 	skill.name = name
 	skill.set_skill_exp(lvl,hard_lvl)

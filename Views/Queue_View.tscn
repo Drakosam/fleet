@@ -3,19 +3,19 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Tabs
 
-var actor_list = []
+var actor = null
 
 func _ready():
 	pass # Replace with function body.
 
 
 func tick_queue():
-	if len(actor_list):
-		$xp.text = str(actor_list[0].get_progress())
+	if actor:
+		$xp.text = str(actor.get_progress())
 
 	
-func setup_actor(_aktor_list):
-	actor_list=_aktor_list
+func setup_actor(actor_in):
+	actor=actor_in
 
 "
 

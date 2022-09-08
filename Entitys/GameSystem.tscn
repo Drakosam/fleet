@@ -3,7 +3,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
-var AktorEntity = preload(\"res://ActorEntity.tscn\")
+var AktorEntity = preload(\"res://Entitys/ActorEntity.tscn\")
 var aktors_list = []
 
 func _ready():

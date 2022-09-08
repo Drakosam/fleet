@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Views/Queue_View.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Views/SkillTabView.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Panel
+
+
+func _ready():
+	pass # Replace with function body.
+
+
+func tick_up():
+	$Skill_tabs/Queue.tick_queue()
+
+func setup_actor(aktor_list):
+	var actor = aktor_list[0]
+	$Skill_tabs/Queue.setup_actor(actor)
+	$Skill_tabs/Engeniring.set_actor(actor)
+	$Skill_tabs/Ships .set_actor(actor)
+	$Skill_tabs/Wepons.set_actor(actor)
+	$Skill_tabs/Industry.set_actor(actor)
+	$Skill_tabs/Social.set_actor(actor)
+	$Skill_tabs/Misc.set_actor(actor)
+
+"
+
+[node name="Skills" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="Select_Person" type="Panel" parent="."]
+anchor_right = 1.0
+margin_bottom = 60.0
+
+[node name="Skill_tabs" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 60.0
+tab_align = 0
+
+[node name="Queue" parent="Skill_tabs" instance=ExtResource( 1 )]
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Ships" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Wepons" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Engeniring" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Industry" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Social" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false
+
+[node name="Misc" parent="Skill_tabs" instance=ExtResource( 2 )]
+visible = false

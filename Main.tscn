@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://SettingsView.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SkillsView.tscn" type="PackedScene" id=2]
-[ext_resource path="res://FleetView.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ShipView.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GameSystem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Views/SettingsView.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Views/SkillsView.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Views/FleetView.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Views/ShipView.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entitys/GameSystem.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -95,6 +95,7 @@ anchor_bottom = 1.0
 margin_left = 60.0
 
 [node name="Settings" parent="CanvasLayer/PanelContainer" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
@@ -103,6 +104,7 @@ margin_right = 957.0
 margin_bottom = 593.0
 
 [node name="Fleet" parent="CanvasLayer/PanelContainer" instance=ExtResource( 3 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
@@ -111,6 +113,7 @@ margin_right = 957.0
 margin_bottom = 593.0
 
 [node name="Shiip" parent="CanvasLayer/PanelContainer" instance=ExtResource( 4 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
@@ -119,6 +122,7 @@ margin_right = 957.0
 margin_bottom = 593.0
 
 [node name="Skills" parent="CanvasLayer/PanelContainer" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0

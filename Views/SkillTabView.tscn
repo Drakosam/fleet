@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Tabs
+
+var skills = []
+
+var show_actor = null
+var show_grupe = \"test\"
+
+func _ready():
+	pass # Replace with function body.
+
+
+func set_actor(actor):
+	show_actor = actor
+
+
+func set_grupe_to_show(grupe):
+	show_grupe = grupe
+"
+
+[node name="SkillTabView" type="Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 0.5
+anchor_bottom = 1.0
